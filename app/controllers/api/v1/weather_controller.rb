@@ -5,9 +5,9 @@ module Api
       def index
         # binding.pry
         render json: {'location' => "#{params[:location]}",
-                      'current' => CurrentSerializer.new(CurrentWeather.current_wx_data),
-                      'hourly' => HourlySerializer.new(HourlyWeather.hourly_wx_data),
-                      'forecast' => ForecastSerializer.new(ForecastWeather.forecast_wx_data)
+                      'current' => CurrentWeatherSerializer.new.current_data,
+                      'hourly' => HourlyWeatherSerializer.new.hourly_data,
+                      'forecast' => ForecastWeatherSerializer.new.forecast_data
                       }
       end
 
