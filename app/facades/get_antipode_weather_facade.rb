@@ -16,7 +16,18 @@ class GetAntipodeWeatherFacade
   end
 
   def data
-    data = 
+    data = {"type" => "antipode",
+            "attributes" => {"location_name" => "antipode",
+                            "forecast" => current},
+            "search_location" => "#{get_location_id.name}"}
+  end
+
+  def current
+    current_location = get_location_id
+    currently = CurrentWeather.find_by(location_id: current_location.id)
+    {"summary" => currently.summary,
+     "current_temperature" => currently.temperature
+    }
   end
 
 end
