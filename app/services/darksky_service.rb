@@ -3,7 +3,7 @@ class DarkskyService
   def initialize(location, antipode=false)
     @location = location
     @antipode = antipode
-    binding.pry
+    # binding.pry
   end
 
   def get_weather_data
@@ -16,6 +16,13 @@ class DarkskyService
   def find_coordinates
     @google_coordinates = GoogleService.new(@location)
     @google_coordinates.get_coordinates
+    if @antipode
+      coordinates = AntipodeService.new(@google_coordinates.get_coordinates)
+      coordinates.get_coordinates
+    else
+      coordinates = @google_coordinates.get_coordinates
+    end
+    coordinates
   end
 
   def get_google_location
