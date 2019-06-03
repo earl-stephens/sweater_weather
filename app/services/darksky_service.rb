@@ -20,10 +20,11 @@ class DarkskyService
     if @antipode
       coordinates = AntipodeService.new(@google_coordinates.get_coordinates)
       # binding.pry
-      coordinates.get_coordinates
+      coordinates = coordinates.get_coordinates
     else
       coordinates = @google_coordinates.get_coordinates
     end
+    binding.pry
     coordinates
   end
 

@@ -7,9 +7,9 @@ class AntipodeService
 
   def get_coordinates
     results = get_json
-    coordinates = results[:attributes][:lat].to_s +
+    coordinates = results[:data][:attributes][:lat].to_s +
                   "," +
-                  results[:attributes][:long].to_s
+                  results[:data][:attributes][:long].to_s
   end
 
   private
