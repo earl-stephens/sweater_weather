@@ -24,12 +24,21 @@ class DarkskyService
     else
       coordinates = @google_coordinates.get_coordinates
     end
-    binding.pry
+    # binding.pry
     coordinates
   end
 
   def get_google_location
     @google_coordinates.get_location
+  # binding.pry
+  end
+
+  def get_antipode_location
+    if @antipode
+      find_coordinates
+      reverse = @google_coordinates.get_reverse_location(find_coordinates)
+      reverse
+    end
   end
 
   private

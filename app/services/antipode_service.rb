@@ -12,6 +12,11 @@ class AntipodeService
                   results[:data][:attributes][:long].to_s
   end
 
+  def get_attributes
+    results = get_json
+    attributes = {"id" => results[:data][:id], "type" => [:data][:type]}
+  end
+
   private
 
   def location_lat
@@ -23,7 +28,7 @@ class AntipodeService
   end
 
   def get_json
-    response = conn.get
+    @_response ||= conn.get
     data = JSON.parse(response.body, symbolize_names: true)
     # binding.pry
   end

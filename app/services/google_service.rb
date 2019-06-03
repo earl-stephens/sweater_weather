@@ -17,6 +17,10 @@ class GoogleService
     results[:results][0][:formatted_address]
   end
 
+  def get_antipode_location(coordinates)
+
+  end
+
   private
 
   def get_json
