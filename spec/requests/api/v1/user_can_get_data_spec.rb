@@ -11,8 +11,7 @@ describe 'a user can get weather data' do
     expect(wx_data["weather_data"]["currently"]).to have_key("temperature")
     expect(wx_data["weather_data"]["currently"]["temperature"]).to be_an_instance_of(String)
     expect(wx_data["weather_data"]["currently"]).to have_key("uv_index")
-    # expect(wx_data["weather_data"]['hourly'].length).to eq(48)
-    # expect(wx_data["weather_data"]['forecast'].length).to eq(8)
-    # expect(wx_data['location']).to eq('denver,co')
+    expect(wx_data["weather_data"]['hourly']["data"].length).to eq(49)
+    expect(wx_data["weather_data"]['forecast']["data"].length).to eq(8)
   end
 end

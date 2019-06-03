@@ -20,7 +20,7 @@ class GetWeatherFacade
     # currently = CurrentWeather.find_by(location_id: get_location_id.id)
     # data = {"forecast" => forecast, "hourly" => hourly}
     # binding.pry
-    data = {"currently" => current}
+    data = {"currently" => current, "hourly" => hourly_section.hourly_wx_data, "forecast" => forecast_section.forecast_wx_data}
   end
 
   def current
@@ -42,12 +42,14 @@ class GetWeatherFacade
     }
   end
 
-  def forecast
-    {"a" => "A", "b" => "B", "c" => "C", "d" => "D", "e" => "E", "f" => "F", "g" => "G", "h" => "H"}
+  def forecast_section
+    current_location = get_location_id
+    ForecastWeather.find_by(location_id: current_location.id)
   end
 
-  def hourly
-    {"day1" => "1", "day2" => "2"}
+  def hourly_section
+    current_location = get_location_id
+    hourly = HourlyWeather.find_by(location_id: current_location.id)
   end
 
 end
