@@ -6,12 +6,13 @@ class GetAntipodeWeatherFacade
   end
 
   def get_location_id
-    perform_updates(@antipode)
+    perform_updates
     Location.find_by(name: @location)
   end
 
-  def perform_updates(@antipode)
-    updater = UpdaterService.new(@location, @antipode)
+  def perform_updates
+    antipode = @antipode
+    updater = UpdaterService.new(@location, antipode)
     updater.update_records
   end
 

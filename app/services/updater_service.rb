@@ -1,7 +1,9 @@
 class UpdaterService
 
-  def initialize(location)
+  def initialize(location, antipode=false)
     @location = location
+    @antipode = antipode
+    # binding.pry
   end
 
   def check_records
@@ -30,7 +32,8 @@ class UpdaterService
   end
 
   def add_location
-    @grab_weather = DarkskyService.new(@location)
+    antipode = @antipode
+    @grab_weather = DarkskyService.new(@location, antipode)
     @data_for_update = @grab_weather.get_weather_data
   end
 

@@ -1,7 +1,9 @@
 class DarkskyService
 
-  def initialize(location)
+  def initialize(location, antipode=false)
     @location = location
+    @antipode = antipode
+    binding.pry
   end
 
   def get_weather_data
