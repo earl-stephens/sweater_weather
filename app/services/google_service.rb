@@ -21,7 +21,7 @@ class GoogleService
 
   def get_json
     binding.pry
-    @_response ||= conn.get("api/geocode/json?address=#{@location}?key=#{ENV['google_key']}")
+    @_response ||= conn.get("api/geocode/json?address=#{@location}&key=#{ENV['google_key']}")
     data = JSON.parse(@_response.body, symbolize_names: true)
     # binding.pry
   end
