@@ -5,15 +5,14 @@ class GetWeatherFacade
   end
 
   def get_location_id
-    check_for_existing_location
+    perform_updates
     Location.find_by(name: @location)
     # binding.pry
   end
 
-  def check_for_existing_location
-    if Location.find_by(name: @location) == nil
-      Updater.new(@location)
-    end
+  def perform_updates
+    updater = UpdaterService.new(@location)
+    updater.update_records
   end
 
   def data
