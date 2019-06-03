@@ -19,12 +19,13 @@ class GoogleService
   private
 
   def get_json
-    response = conn.get
+    response = conn.get("api/geocode/json?address=#{@location}?key=#{ENV['google_key']}")
     data = JSON.parse(response.body, symbolize_names: true)
+    binding.pry
   end
 
   def conn
-    Faraday.new("https://maps.googleapis.com/maps/api/geocode/json?address=#{@location}&key=#{ENV['google_key']}") do |f|
+    Faraday.new("https://maps.googleapis.com/maps?key=#{ENV['google_key']}") do |f|
       f.adapter Faraday.default_adapter
     end
   end

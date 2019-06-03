@@ -1,7 +1,7 @@
 require "rails_helper"
 
 describe 'a user can get weather data' do
-  xit 'via an api call' do
+  it 'via an api call' do
     get '/api/v1/forecast?location=denver,co', headers: {'Accept' => 'application/json', 'Content-Type' => 'application/json'}
 
     expect(response).to be_successful
