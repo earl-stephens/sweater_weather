@@ -10,16 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190602045828) do
+ActiveRecord::Schema.define(version: 20190603075415) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "current_weathers", force: :cascade do |t|
-    t.json "current_wx_data"
     t.bigint "location_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "icon"
+    t.string "summary"
+    t.string "temperature"
+    t.string "high_temperature"
+    t.string "low_temperature"
+    t.string "location_of_request"
+    t.string "time"
+    t.string "today_forecast"
+    t.string "feels_like"
+    t.string "humidity"
+    t.string "visibility"
+    t.string "uv_index"
     t.index ["location_id"], name: "index_current_weathers_on_location_id"
   end
 
