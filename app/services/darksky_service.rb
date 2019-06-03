@@ -16,7 +16,7 @@ class DarkskyService
   def find_coordinates
     @google_coordinates = GoogleService.new(@location)
     # @google_coordinates.get_coordinates
-    binding.pry
+    # binding.pry
     if @antipode
       coordinates = AntipodeService.new(@google_coordinates.get_coordinates)
       # binding.pry

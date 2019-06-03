@@ -16,7 +16,7 @@ describe 'a user can get weather data' do
   end
 
   it 'via antipode call' do
-    get '/api/v1/antipode?loc=hongkong,cn', headers: {'api_key' => "#{ENV['antipode_key']}"}
+    get '/api/v1/antipode?loc=HongKong,CN', headers: {'api_key' => "#{ENV['antipode_key']}"}
 
     expect(response).to be_successful
 # binding.pry
