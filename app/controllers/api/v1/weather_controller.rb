@@ -3,14 +3,11 @@ module Api
     class WeatherController < ApplicationController
 
       def index
-        # binding.pry
-        render json: {'location' => "#{params[:location]}",
-                      'current' => CurrentWeatherSerializer.new.current_data,
-                      'hourly' => HourlyWeatherSerializer.new.hourly_data,
-                      'forecast' => ForecastWeatherSerializer.new.forecast_data
-                      }
+        # query_location = formatted_location
+        query_location = params[:location]
+        serializer = WeatherSerializer.new(query_location)
+        render json: { "weather_data" => serializer.data }
       end
-
     end
   end
 end
