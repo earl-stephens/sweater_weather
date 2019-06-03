@@ -8,6 +8,7 @@ module Api
         serializer = WeatherSerializer.new(query_location)
         render json: { "weather_data" => serializer.data }
       end
+
     end
   end
 end

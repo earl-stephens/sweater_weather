@@ -9,4 +9,9 @@ class WeatherSerializer
     facade.data
   end
 
+  def antipode_data
+    facade = GetAntipodeWeatherFacade.new(@location)
+    facade.data
+  end
+
 end
